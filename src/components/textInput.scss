@@ -1,0 +1,86 @@
+@import "_mixins.scss";
+
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+.form_group {
+	margin-bottom: 15px;
+
+	input[type=text],
+	input[type=password] {
+		background-color: transparent;
+		background-image: none;
+		@include border-radius(3px);
+		position: relative;
+		height: auto;
+		width: 100%;
+		margin: 0;
+		padding: 8px 16px;
+		@include box-sizing(border-box);
+		outline: none;
+
+		/**/
+		color: #263238;
+		font-size: 14px;
+	}
+
+	&.form_group__valid {
+		input[type=text],
+		input[type=password] {
+			@include box-shadow(none);
+		}
+	}
+
+	&.form_group__error {
+		input[type=text],
+		input[type=password] {
+			border: 1px solid #f24e4e;
+		}
+	}
+
+	&.form_group__empty {
+		input[type=text],
+		input[type=password] {
+			@include box-shadow(none);
+		}
+	}
+
+	&.form_group__focused {
+		input[type=text],
+		input[type=password] {
+			border: 1px solid rgba(0, 0, 0, .04);
+			@include box-shadow(0 0 6px rgba(0, 0, 0, .04));
+		}
+	}
+
+	&.form_group__unfocused {
+		input[type=text],
+		input[type=password] {
+			border: 1px solid rgba(0, 0, 0, .04);
+			@include box-shadow(none);
+		}
+	}
+}
+
+label {
+	font-size: 16px;
+	font-weight: 700;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.required_field {
+	color: #dd2c00;
+}
+
+.help_block {
+	display: block;
+	margin-top: 5px;
+
+	.error {
+		color: #dd2c00;
+	}
+}

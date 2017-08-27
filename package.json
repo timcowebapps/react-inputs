@@ -1,0 +1,57 @@
+{
+	"name": "timcowebapps-react-inputs",
+	"version": "0.1.0",
+	"description": "Микрокомпонент полей ввода",
+	"author": "Victor Timoshin <victor-timoshin@hotmail.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/timcowebapps/react-inputs.git"
+	},
+	"keywords": [
+		"React",
+		"input"
+	],
+	"files": [
+		"docs",
+		"lib"
+	],
+	"main": "./lib/textInput.js",
+	"types": "./lib/textInput.d.ts",
+	"scripts": {
+		"prepublish": "npm run build-components",
+		"preclean-examples": "rm -f docs/*",
+		"postclean-examples": "rm -f src/components/*.d.ts",
+		"build-examples": "npm run preclean-examples && cd examples; webpack && npm run postclean-examples",
+		"start-examples": "npm run preclean-examples && cd examples; webpack-dev-server --hot --inline --host 0.0.0.0 --port 2283 --content-base ../docs",
+		"copy-styles": "cp src/components/*.scss lib/",
+		"clean-components": "rm -f lib/*",
+		"build-components": "npm run clean-components && node webpack.config && npm run copy-styles",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"lodash": "^4.17.4",
+		"prop-types": "^15.5.10",
+		"react": "^15.6.1",
+		"react-dom": "^15.6.1",
+		"timcowebapps-react-utils": "^0.1.2"
+	},
+	"devDependencies": {
+		"@types/jquery": "^3.2.12",
+		"@types/node": "^8.0.25",
+		"@types/react": "^16.0.5",
+		"@types/react-dom": "^15.5.4",
+		"css-loader": "^0.28.5",
+		"extract-text-webpack-plugin": "^3.0.0",
+		"html-webpack-plugin": "^2.30.1",
+		"node-sass": "^4.5.3",
+		"path": "^0.12.7",
+		"sass-loader": "^6.0.6",
+		"style-loader": "^0.18.2",
+		"ts-loader": "^2.3.4",
+		"ts-node": "^3.3.0",
+		"typescript": "^2.4.2",
+		"webpack": "^3.5.5",
+		"webpack-dev-server": "^2.7.1"
+	}
+}
