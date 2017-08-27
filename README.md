@@ -1,4 +1,4 @@
-## React-Buttons [![dependencies](https://david-dm.org/timcowebapps/react-inputs.svg)](https://david-dm.org/timcowebapps/react-inputs)
+## React-Inputs [![dependencies](https://david-dm.org/timcowebapps/react-inputs.svg)](https://david-dm.org/timcowebapps/react-inputs)
 
 [![NPM](https://nodei.co/npm/timcowebapps-react-inputs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/timcowebapps-react-inputs/)
 
