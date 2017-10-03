@@ -1,4 +1,10 @@
-@import "_mixins.scss";
+@import '~timcowebapps-scss-dir/_global.scss';
+$global-enable-rounded: true;
+
+@import '~timcowebapps-scss-dir/mixins/_border-radius.scss';
+@import '~timcowebapps-scss-dir/mixins/_box-sizing.scss';
+@import '~timcowebapps-scss-dir/mixins/_transition.scss';
+@import '~timcowebapps-scss-dir/mixins/_shadow.scss';
 
 fieldset {
 	border: none;

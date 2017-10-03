@@ -14,7 +14,10 @@ var config = {
 		libraryTarget: "commonjs2"
 	},
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js']
+		extensions: ['.ts', '.tsx', '.js'],
+		alias: {
+			'timcowebapps-scss-dir': path.resolve(__dirname, 'node_modules', 'timcowebapps-scss')
+		}
 	},
 	devtool: 'source-map',
 	module: {

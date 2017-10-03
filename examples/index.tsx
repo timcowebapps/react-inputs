@@ -1,22 +1,20 @@
 'use strict';
 
-/**
- * Внешние зависимости.
- */
+/* Внешние зависимости. */
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { IJsonSchema } from 'timcowebapps-react-utils';
-/**
- * Внутрение зависимости.
- */
+
+/* Внутрение зависимости. */
 import { TextInput } from '../src/components/textInput';
-var styles: any = require('../src/components/textInput.scss');
+var textInputStyles: any = require('../src/components/textInput.scss');
 
 const App: React.StatelessComponent<any> = (props: any) => {
 	return (
 		<div style={{ padding: '20px 20px 0' }}>
 			<TextInput
+				styles={textInputStyles}
 				type="text"
 				name="text"
 				text='Текст'

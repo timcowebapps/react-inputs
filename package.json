@@ -1,6 +1,6 @@
 {
 	"name": "timcowebapps-react-inputs",
-	"version": "0.1.0",
+	"version": "0.1.0-rc.3",
 	"description": "Микрокомпонент полей ввода",
 	"author": "Victor Timoshin <victor-timoshin@hotmail.com>",
 	"license": "MIT",
@@ -9,7 +9,7 @@
 		"url": "https://github.com/timcowebapps/react-inputs.git"
 	},
 	"keywords": [
-		"React",
+		"react",
 		"input"
 	],
 	"files": [
@@ -31,27 +31,28 @@
 	},
 	"dependencies": {
 		"lodash": "^4.17.4",
-		"prop-types": "^15.5.10",
-		"react": "^15.6.1",
-		"react-dom": "^15.6.1",
-		"timcowebapps-react-utils": "^0.1.2"
+		"prop-types": "^15.6.0",
+		"react": "^16.0.0",
+		"react-dom": "^16.0.0",
+		"timcowebapps-react-utils": "^0.1.2",
+		"timcowebapps-scss": "git+https://git@github.com/timcowebapps/scss.git"
 	},
 	"devDependencies": {
 		"@types/jquery": "^3.2.12",
-		"@types/node": "^8.0.25",
-		"@types/react": "^16.0.5",
-		"@types/react-dom": "^15.5.4",
-		"css-loader": "^0.28.5",
+		"@types/node": "^8.0.31",
+		"@types/react": "^16.0.7",
+		"@types/react-dom": "^15.5.5",
+		"css-loader": "^0.28.7",
 		"extract-text-webpack-plugin": "^3.0.0",
 		"html-webpack-plugin": "^2.30.1",
 		"node-sass": "^4.5.3",
 		"path": "^0.12.7",
 		"sass-loader": "^6.0.6",
 		"style-loader": "^0.18.2",
-		"ts-loader": "^2.3.4",
+		"ts-loader": "^2.3.7",
 		"ts-node": "^3.3.0",
-		"typescript": "^2.4.2",
-		"webpack": "^3.5.5",
-		"webpack-dev-server": "^2.7.1"
+		"typescript": "^2.5.3",
+		"webpack": "^3.6.0",
+		"webpack-dev-server": "^2.9.1"
 	}
 }

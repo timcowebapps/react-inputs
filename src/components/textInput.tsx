@@ -1,20 +1,14 @@
 'use strict';
 
-/**
- * Внешние зависимости.
- */
-//import * as $ from 'jquery';
+/* Внешние зависимости. */
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Classes } from 'timcowebapps-react-utils';
 
-/**
- * Внутренние зависимости.
- */
+/* Внутренние зависимости. */
 import { ITextInputProps } from './textInputProps';
 import { ITextInputState } from './textInputState';
-const styles: any = require('./textInput.scss');
 
 export class TextInput extends React.Component<ITextInputProps, ITextInputState> {
 	public static displayName: string = 'TextInput';
@@ -32,6 +26,7 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 
 	// Свойства компонента по умолчанию.
 	public static defaultProps = {
+		styles: null,
 		type: 'text',
 		name: '',
 		defaultValue: '',
@@ -103,6 +98,10 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 	 * @method render
 	 */
 	public render(): JSX.Element {
+		let {
+			styles
+		} = this.props;
+		
 		var formGroupClasses = Classes.combine(styles.form_group, {
 			[styles.form_group__valid]: this.state.valid,
 			[styles.form_group__error]: !this.state.valid,
@@ -122,7 +121,7 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 
 				<div>
 					<input
-						ref="field"
+						//ref="field"
 						type={this.props.type}
 						name={this.props.name}
 						id={"id_" + this.props.name}
