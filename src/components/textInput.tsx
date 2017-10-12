@@ -24,7 +24,9 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 		required: PropTypes.bool
 	}
 
-	// Свойства компонента по умолчанию.
+	/**
+	 * Свойства компонента по умолчанию.
+	 */
 	public static defaultProps = {
 		styles: null,
 		type: 'text',
@@ -121,7 +123,7 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 
 				<div>
 					<input
-						//ref="field"
+						ref="field"
 						type={this.props.type}
 						name={this.props.name}
 						id={"id_" + this.props.name}

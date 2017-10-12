@@ -21255,7 +21255,7 @@ var TextInput = (function (_super) {
                 this.props.text,
                 (this.props.required) ? React.createElement("span", { className: styles.required_field }, "*") : null),
             React.createElement("div", null,
-                React.createElement("input", { type: this.props.type, name: this.props.name, id: "id_" + this.props.name, defaultValue: this.props.defaultValue, onChange: this._onChange.bind(this), onFocus: this._onFocus.bind(this), onBlur: this._onBlur.bind(this), placeholder: this.props.placeholder, maxLength: 128, required: this.props.required }),
+                React.createElement("input", { ref: "field", type: this.props.type, name: this.props.name, id: "id_" + this.props.name, defaultValue: this.props.defaultValue, onChange: this._onChange.bind(this), onFocus: this._onFocus.bind(this), onBlur: this._onBlur.bind(this), placeholder: this.props.placeholder, maxLength: 128, required: this.props.required }),
                 React.createElement("p", { id: "error_id_" + this.props.name, className: styles.help_block }, error))));
         var _a;
     };
@@ -38532,4 +38532,4 @@ module.exports = {"form_group":"textInput-2xOzR","form_group__valid":"textInput-
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map?c1d844392d8682369a1d
+//# sourceMappingURL=bundle.js.map?aa85ed494515db7345f4
