@@ -3,6 +3,7 @@
 /* Внешние зависимости. */
 import * as _ from 'lodash';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 import { Classes } from 'timcowebapps-react-utils';
 
@@ -103,30 +104,30 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 		let {
 			styles
 		} = this.props;
-		
-		var formGroupClasses = Classes.combine(styles.form_group, {
-			[styles.form_group__valid]: this.state.valid,
-			[styles.form_group__error]: !this.state.valid,
-			[styles.form_group__empty]: true,
-			[styles.form_group__focused]: this.state.focused,
-			[styles.form_group__unfocused]: !this.state.focused
+
+		var formGroupClasses = Classes.bem(styles, "form_group", {
+			modifiers: [
+				this.state.valid ? "valid" : "error",
+				this.state.focused ? "focused" : "unfocused"
+			]
 		});
 
-		let error = this.state.valid ? null : React.DOM.strong({ className: styles.error }, this.state.errorMessages);
+		let error = this.state.valid ? null : <strong className={styles["error"]}>this.state.errorMessages</strong>;
 
 		return (
 			<div className={formGroupClasses}>
-				<label className="control-label" htmlFor={"id_" + this.props.name}>
+				<label className={Classes.bem(styles, "form_group", { element: ["label"], modifiers: [] })} htmlFor={this.props.name + "_field"}>
 					{this.props.text}
-					{(this.props.required) ? <span className={styles.required_field}>*</span> : null}
+					{
+						(this.props.required) ? <span className={Classes.bem(styles, "form_group__label", { element: ["required_field"], modifiers: [] })}>*</span> : null
+					}
 				</label>
 
 				<div>
 					<input
-						ref="field"
 						type={this.props.type}
 						name={this.props.name}
-						id={"id_" + this.props.name}
+						id={this.props.name + "_field"}
 						defaultValue={this.props.defaultValue}
 						onChange={this._onChange.bind(this)}
 						onFocus={this._onFocus.bind(this)}
@@ -134,7 +135,7 @@ export class TextInput extends React.Component<ITextInputProps, ITextInputState>
 						placeholder={this.props.placeholder}
 						maxLength={128}
 						required={this.props.required} />
-					<p id={"error_id_" + this.props.name} className={styles.help_block}>
+					<p id={this.props.name + "_error_id"} className={styles["help_block"]}>
 						{error}
 					</p>
 				</div>

@@ -1,4 +1,6 @@
-## React-Inputs [![dependencies](https://david-dm.org/timcowebapps/react-inputs.svg)](https://david-dm.org/timcowebapps/react-inputs)
+## React-Inputs [![Discord](https://discordapp.com/api/guilds/402238411639095297/widget.png)](https://discord.gg/vCMcgwQ)
+
+[![dependencies](https://david-dm.org/timcowebapps/react-inputs.svg)](https://david-dm.org/timcowebapps/react-inputs)
 
 [![NPM](https://nodei.co/npm/timcowebapps-react-inputs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/timcowebapps-react-inputs/)
 

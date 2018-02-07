@@ -5,7 +5,7 @@ import * as React from 'react';
 
 export interface ITextInputProps extends React.Props<any> {
 	styles: any;
-	type: string; // text, password etc
+	type: string; /*!< text, password etc. */
 	name: string;
 	defaultValue?: string;
 	value?: string;

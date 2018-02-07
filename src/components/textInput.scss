@@ -5,12 +5,7 @@ $global-enable-rounded: true;
 @import '~timcowebapps-scss-dir/mixins/_box-sizing.scss';
 @import '~timcowebapps-scss-dir/mixins/_transition.scss';
 @import '~timcowebapps-scss-dir/mixins/_shadow.scss';
-
-fieldset {
-	border: none;
-	margin: 0;
-	padding: 0;
-}
+@import '~timcowebapps-scss-dir/utils/_bem.scss';
 
 .form_group {
 	margin-bottom: 15px;
@@ -28,33 +23,33 @@ fieldset {
 		@include box-sizing(border-box);
 		outline: none;
 
-		/**/
+		// Стили шрифта
 		color: #263238;
 		font-size: 14px;
 	}
 
-	&.form_group__valid {
+	@include modifier("valid") {
 		input[type=text],
 		input[type=password] {
 			@include box-shadow(none);
 		}
 	}
 
-	&.form_group__error {
+	@include modifier("error") {
 		input[type=text],
 		input[type=password] {
 			border: 1px solid #f24e4e;
 		}
 	}
 
-	&.form_group__empty {
+	@include modifier("empty") {
 		input[type=text],
 		input[type=password] {
 			@include box-shadow(none);
 		}
 	}
 
-	&.form_group__focused {
+	@include modifier("focused") {
 		input[type=text],
 		input[type=password] {
 			border: 1px solid rgba(0, 0, 0, .04);
@@ -62,7 +57,7 @@ fieldset {
 		}
 	}
 
-	&.form_group__unfocused {
+	@include modifier("unfocused") {
 		input[type=text],
 		input[type=password] {
 			border: 1px solid rgba(0, 0, 0, .04);
@@ -71,15 +66,17 @@ fieldset {
 	}
 }
 
-label {
-	font-size: 16px;
-	font-weight: 700;
-	display: inline-block;
-	margin-bottom: 5px;
-}
+.form_group {
+	@include element("label") {
+		font-size: 16px;
+		font-weight: 700;
+		display: inline-block;
+		margin-bottom: 5px;
 
-.required_field {
-	color: #dd2c00;
+		@include element("required_field") {
+			color: #dd2c00;
+		}
+	}
 }
 
 .help_block {
