@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
 	entry: {
-		'textInput': path.resolve(__dirname, 'src/components/textInput.tsx')
+		'field': path.resolve(__dirname, 'src/components/field.tsx')
 	},
 	output: {
 		path: path.resolve(__dirname, 'lib'),

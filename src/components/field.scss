@@ -1,0 +1,93 @@
+%input-focused {
+	.#{$field-name} {
+		@include element("input") {
+			@include box-shadow(inset 0 0 6px rgba(0, 0, 0, .04));
+		}
+	}
+}
+
+%input-unfocused {
+	.#{$field-name} {
+		@include element("input") {
+			@include box-shadow(none);
+		}
+	}
+}
+
+%input-valid {
+	.#{$field-name} {
+		@include element("input") {
+			border-color: $field-input_border-color;
+		}
+	}
+}
+
+%input-error {
+	.#{$field-name} {
+		@include element("input") {
+			border-color: $field-input_border-color-error;
+		}
+	}
+}
+
+.#{$field-name} {
+	margin-bottom: 15px;
+
+	@include element("input") {
+		background-color: $field-input_background-color;
+		background-image: none;
+		border: 1px solid $field-input_border-color;
+		@include border-radius(0);
+		position: relative;
+		height: auto;
+		width: 100%;
+		margin: 0;
+		padding: 8px 16px;
+		@include box-sizing(border-box);
+		outline: none;
+
+		// Стили шрифта
+		font-family: inherit; /*!< Необходимо наследовать значение свойства у родительского элемента */
+		color: $field-input_color;
+		font-size: 16px;
+	}
+
+	@include element("label") {
+		display: inline-block;
+		margin-bottom: 5px;
+
+		// Стили шрифта
+		color: $field-label_color;
+		font-size: 16px;
+		font-weight: 700;
+
+		@include element("asterisk") {
+			color: #ff0000;
+		}
+	}
+
+	@include modifier("focused") {
+		@extend %input-focused;
+	}
+
+	@include modifier("unfocused") {
+		@extend %input-unfocused;
+	}
+
+	@include modifier("valid") {
+		@extend %input-valid;
+	}
+
+	@include modifier("error") {
+		@extend %input-error;
+	}
+}
+
+.help_block {
+	display: block;
+	margin-top: 5px;
+
+	@include modifier("error") {
+		color: #ff0000;
+	}
+}

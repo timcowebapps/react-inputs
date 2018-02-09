@@ -1,6 +1,6 @@
 {
 	"name": "timcowebapps-react-inputs",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "Микрокомпонент полей ввода",
 	"author": "Victor Timoshin <victor-timoshin@hotmail.com>",
 	"license": "MIT",
@@ -16,8 +16,8 @@
 		"docs",
 		"lib"
 	],
-	"main": "./lib/textInput.js",
-	"types": "./lib/textInput.d.ts",
+	"main": "./lib/field.js",
+	"types": "./lib/field.d.ts",
 	"scripts": {
 		"prepublish": "npm run build-components",
 		"preclean-examples": "rm -f docs/*",
@@ -34,7 +34,7 @@
 		"prop-types": "^15.6.0",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
-		"timcowebapps-react-utils": "^0.1.3-rc.0",
+		"timcowebapps-react-utils": "^0.1.3-rc.1",
 		"timcowebapps-scss": "git+https://git@github.com/timcowebapps/scss.git"
 	},
 	"devDependencies": {

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -300,6 +300,21 @@ module.exports = emptyFunction;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(22);
+} else {
+  module.exports = __webpack_require__(23);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -393,7 +408,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -450,21 +465,6 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(19);
-} else {
-  module.exports = __webpack_require__(20);
-}
-
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -575,7 +575,7 @@ module.exports = warning;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(3);
+  var invariant = __webpack_require__(4);
   var warning = __webpack_require__(6);
   var ReactPropTypesSecret = __webpack_require__(8);
   var loggedTypeFailures = {};
@@ -648,6 +648,13 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"form_field--focused":"index-2MGi1","form_field__input":"index-15tkt","form_field--unfocused":"index-1i_bs","form_field--valid":"index-3DLRU","form_field--error":"index-leAp3","form_field":"index-2DqUt","form_field__label":"index-zXGdm","form_field__label__asterisk":"index-1r3fK","help_block":"index-3X4LA","help_block--error":"index-u9J4s"};
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -686,7 +693,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -767,7 +774,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -809,7 +816,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -880,7 +887,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -895,7 +902,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(23);
+var isTextNode = __webpack_require__(26);
 
 /*eslint-disable no-bitwise */
 
@@ -923,7 +930,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -953,7 +960,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18055,10 +18062,56 @@ module.exports = focusNode;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31), __webpack_require__(32)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34), __webpack_require__(35)(module)))
 
 /***/ }),
-/* 16 */
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(36)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(37)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.Shared = __webpack_require__(19).Shared;
+exports.Classes = __webpack_require__(38).Classes;
+exports.Enum = __webpack_require__(39).Enum;
+exports.IJsonSchemaMap = __webpack_require__(20).IJsonSchemaMap;
+exports.IJsonSchema = __webpack_require__(20).IJsonSchema;
+
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18097,7 +18150,7 @@ var Shared;
 //# sourceMappingURL=shared.js.map
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18106,7 +18159,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //# sourceMappingURL=schemas.js.map
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18122,37 +18175,129 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(4);
-var ReactDOM = __webpack_require__(21);
-var textInput_1 = __webpack_require__(30);
-var textInputStyles = __webpack_require__(39);
+var React = __webpack_require__(2);
+var ReactDOM = __webpack_require__(24);
+var field_1 = __webpack_require__(33);
+var validation_rules_1 = __webpack_require__(41);
+var styles = __webpack_require__(9);
 var App = (function (_super) {
     __extends(App, _super);
     function App(props) {
         var _this = _super.call(this, props) || this;
+        _this.state = _this._getInitialState();
+        _this._handleWebsiteValidation = _this._handleWebsiteValidation.bind(_this);
+        _this._handleChangeWebsite = _this._handleChangeWebsite.bind(_this);
+        _this._handleChangeMessage = _this._handleChangeMessage.bind(_this);
         _this._handleSubmit = _this._handleSubmit.bind(_this);
         return _this;
     }
+    App.prototype._getInitialState = function () {
+        return {
+            fields: {
+                website: '',
+                message: ''
+            }
+        };
+    };
     App.prototype._getFormData = function () {
-        console.log('_getFormData', Object.keys(this.refs));
         var refs = this.refs;
-        var usernameEl = ReactDOM.findDOMNode(refs.username).querySelector('input#username_field');
-        var passwordEl = ReactDOM.findDOMNode(refs.password).querySelector('input#password_field');
+        var websiteEl = ReactDOM.findDOMNode(refs.website_ref).querySelector('input#website_id');
+        var messageEl = ReactDOM.findDOMNode(refs.message_ref).querySelector('textarea#message_id');
         var data = {
-            username: usernameEl.value,
-            password: passwordEl.value
+            website: websiteEl.value,
+            message: messageEl.value
         };
         return data;
     };
+    App.prototype._handleWebsiteValidation = function (value) {
+        return validation_rules_1.checkUrl(value);
+    };
+    App.prototype._handleChangeWebsite = function (event) {
+        var newState = this.state.fields;
+        newState.website = event.target.value;
+        this.setState({
+            fields: newState
+        });
+    };
+    App.prototype._handleChangeMessage = function (event) {
+        var newState = this.state.fields;
+        newState.message = event.target.value;
+        this.setState({
+            fields: newState
+        });
+    };
     App.prototype._handleSubmit = function (event) {
         event.preventDefault();
-        console.log(this._getFormData());
+        if (this.refs.website_ref.isValid()) {
+            console.log(this._getFormData());
+        }
     };
     App.prototype.render = function () {
         return (React.createElement("div", { style: { padding: '20px 20px 0' } },
-            React.createElement(textInput_1.TextInput, { styles: textInputStyles, type: "text", name: "username", ref: "username", text: '\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F', placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u043A\u0441\u0442.", errorMessages: "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435.", required: true }),
-            React.createElement(textInput_1.TextInput, { styles: textInputStyles, type: "password", name: "password", ref: "password", text: '\u041F\u0430\u0440\u043E\u043B\u044C', placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u043A\u0441\u0442.", errorMessages: "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435.", required: true }),
-            React.createElement("button", { onClick: this._handleSubmit }, "Sign in")));
+            React.createElement(field_1.Field, { ref: "website_ref", validate: this._handleWebsiteValidation, value: this.state.fields.website, onChange: this._handleChangeWebsite, schema: {
+                    properties: {
+                        name: "website",
+                        validators: [
+                            validation_rules_1.validationRequired,
+                            validation_rules_1.validationMinLength(3),
+                            validation_rules_1.validationMaxLength(8),
+                            validation_rules_1.validationEmail
+                        ],
+                        classes: {
+                            pipeline: __webpack_require__(9),
+                            block: "form_field"
+                        },
+                        style: { width: "100%" }
+                    },
+                    items: [{
+                            id: 'input',
+                            default: {
+                                value: "https://timcowebapps.github.io/react-inputs/"
+                            },
+                            properties: {
+                                tag: "input",
+                                type: "url",
+                                placeholder: "Введите адрес сайта",
+                                classes: {
+                                    modifiers: [],
+                                    extra: ""
+                                },
+                                style: ""
+                            }
+                        }, {
+                            id: 'label',
+                            properties: {
+                                text: "Сайт:",
+                                classes: {
+                                    modifiers: [],
+                                    extra: ""
+                                }
+                            }
+                        }]
+                } }),
+            React.createElement(field_1.Field, { ref: "message_ref", value: this.state.fields.message, onChange: this._handleChangeMessage, schema: {
+                    properties: {
+                        name: "message",
+                        classes: {
+                            pipeline: __webpack_require__(9),
+                            block: "form_field"
+                        },
+                        style: { width: "100%" }
+                    },
+                    items: [{
+                            id: 'input',
+                            properties: {
+                                tag: "textarea",
+                                placeholder: "Введите сообщение"
+                            }
+                        }, {
+                            id: 'label',
+                            properties: {
+                                text: "Текс:"
+                            }
+                        }]
+                } }),
+            React.createElement("button", { onClick: this._handleSubmit }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C")));
     };
     return App;
 }(React.Component));
@@ -18160,7 +18305,7 @@ ReactDOM.render(React.createElement(App, null), document.getElementById('contain
 
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18173,7 +18318,7 @@ ReactDOM.render(React.createElement(App, null), document.getElementById('contain
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(2),n=__webpack_require__(5),p=__webpack_require__(1),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
+var m=__webpack_require__(3),n=__webpack_require__(5),p=__webpack_require__(1),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
 function y(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var z={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function A(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}A.prototype.isReactComponent={};A.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?y("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};A.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function B(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}function C(){}C.prototype=A.prototype;var D=B.prototype=new C;D.constructor=B;m(D,A.prototype);D.isPureReactComponent=!0;function E(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}var F=E.prototype=new C;F.constructor=E;m(F,A.prototype);F.unstable_isAsyncReactComponent=!0;F.render=function(){return this.props.children};var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
@@ -18188,7 +18333,7 @@ isValidElement:K,version:"16.2.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_F
 
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18209,9 +18354,9 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(2);
+var _assign = __webpack_require__(3);
 var emptyObject = __webpack_require__(5);
-var invariant = __webpack_require__(3);
+var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
 var emptyFunction = __webpack_require__(1);
 var checkPropTypes = __webpack_require__(7);
@@ -19553,7 +19698,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19591,15 +19736,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(22);
-} else {
   module.exports = __webpack_require__(25);
+} else {
+  module.exports = __webpack_require__(28);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19615,7 +19760,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(4),l=__webpack_require__(9),B=__webpack_require__(2),C=__webpack_require__(1),ba=__webpack_require__(10),da=__webpack_require__(11),ea=__webpack_require__(12),fa=__webpack_require__(13),ia=__webpack_require__(14),D=__webpack_require__(5);
+var aa=__webpack_require__(2),l=__webpack_require__(10),B=__webpack_require__(3),C=__webpack_require__(1),ba=__webpack_require__(11),da=__webpack_require__(12),ea=__webpack_require__(13),fa=__webpack_require__(14),ia=__webpack_require__(15),D=__webpack_require__(5);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -19835,7 +19980,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",r
 
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19850,7 +19995,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",r
  * @typechecks
  */
 
-var isNode = __webpack_require__(24);
+var isNode = __webpack_require__(27);
 
 /**
  * @param {*} object The object to check.
@@ -19863,7 +20008,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19891,7 +20036,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19912,21 +20057,21 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var React = __webpack_require__(4);
-var invariant = __webpack_require__(3);
+var React = __webpack_require__(2);
+var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
-var ExecutionEnvironment = __webpack_require__(9);
-var _assign = __webpack_require__(2);
+var ExecutionEnvironment = __webpack_require__(10);
+var _assign = __webpack_require__(3);
 var emptyFunction = __webpack_require__(1);
-var EventListener = __webpack_require__(10);
-var getActiveElement = __webpack_require__(11);
-var shallowEqual = __webpack_require__(12);
-var containsNode = __webpack_require__(13);
-var focusNode = __webpack_require__(14);
+var EventListener = __webpack_require__(11);
+var getActiveElement = __webpack_require__(12);
+var shallowEqual = __webpack_require__(13);
+var containsNode = __webpack_require__(14);
+var focusNode = __webpack_require__(15);
 var emptyObject = __webpack_require__(5);
 var checkPropTypes = __webpack_require__(7);
-var hyphenateStyleName = __webpack_require__(26);
-var camelizeStyleName = __webpack_require__(28);
+var hyphenateStyleName = __webpack_require__(29);
+var camelizeStyleName = __webpack_require__(31);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -35293,7 +35438,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35308,7 +35453,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(27);
+var hyphenate = __webpack_require__(30);
 
 var msPattern = /^ms-/;
 
@@ -35335,7 +35480,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35371,7 +35516,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35386,7 +35531,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(29);
+var camelize = __webpack_require__(32);
 
 var msPattern = /^-ms-/;
 
@@ -35414,7 +35559,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35449,7 +35594,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35464,79 +35609,116 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(15);
-var React = __webpack_require__(4);
-var PropTypes = __webpack_require__(33);
-var timcowebapps_react_utils_1 = __webpack_require__(36);
-var TextInput = (function (_super) {
-    __extends(TextInput, _super);
-    function TextInput(props) {
+var _ = __webpack_require__(16);
+var React = __webpack_require__(2);
+var PropTypes = __webpack_require__(17);
+var timcowebapps_react_utils_1 = __webpack_require__(18);
+var label_1 = __webpack_require__(40);
+var Field = (function (_super) {
+    __extends(Field, _super);
+    function Field(props) {
         var _this = _super.call(this, props) || this;
         _this.state = _this._getInitialState();
         return _this;
     }
-    TextInput.prototype._getInitialState = function () {
+    Field.prototype._getInitialState = function () {
+        var inputDefaultValue = "";
+        var inputSchema = _.filter(this.props.schema.items, { id: 'input' })[0];
+        if (inputSchema.default)
+            inputDefaultValue = inputSchema.default.value;
         return {
-            value: this.props.value || '',
-            errorMessages: this.props.errorMessages,
+            value: this.props.value || inputDefaultValue,
+            empty: this._isEmpty(this.props.value || inputDefaultValue),
             valid: true,
             focused: false
         };
     };
-    TextInput.prototype.componentWillReceiveProps = function (nextProps) {
-        if (nextProps.value) {
-            if (!_.isUndefined(nextProps.value) && nextProps.value.length > 0) {
-                if (this.props.validate && this.props.validate(nextProps.value)) {
-                    this.setState({
-                        valid: true
-                    });
-                }
-                else {
-                    this.setState({
-                        valid: false
-                    });
-                }
-            }
+    Field.prototype.componentWillReceiveProps = function (nextProps) {
+        if (nextProps.value !== this.props.value) {
+            this.setState({
+                value: nextProps.value,
+            });
         }
     };
-    TextInput.prototype.isValid = function () {
+    Field.prototype.isValid = function () {
         if (this.props.validate) {
             if (_.isEmpty(this.state.value) || !this.props.validate(this.state.value)) {
                 this.setState({
                     valid: false
                 });
             }
+            else {
+                this.setState({
+                    valid: true
+                });
+            }
         }
         return this.state.valid;
     };
-    TextInput.prototype.render = function () {
-        var styles = this.props.styles;
-        var formGroupClasses = timcowebapps_react_utils_1.Classes.bem(styles, "form_group", {
+    Field.prototype._isEmpty = function (value) {
+        return value === '';
+    };
+    Field.prototype._renderInput = function (name, classes, obj) {
+        var attributes = {};
+        if (obj.properties.tag === "textarea") {
+            attributes.rows = obj.properties.rows;
+            attributes.cols = obj.properties.cols;
+            attributes.wrap = obj.properties.wrap;
+        }
+        else {
+            attributes.type = obj.properties.type || "text";
+        }
+        attributes.name = name;
+        attributes.id = name + "_id";
+        attributes.defaultValue = (obj.default) ? obj.default.value : "";
+        attributes.placeholder = obj.properties.placeholder || null;
+        attributes.className = timcowebapps_react_utils_1.Classes.bem(classes.pipeline, classes.block, {
+            element: "input",
+            modifiers: (obj.properties.classes) ? (obj.properties.classes.modifiers || []) : []
+        });
+        attributes.style = obj.properties.style || null;
+        return React.createElement(obj.properties.tag, __assign({}, attributes, { onChange: this._handleChange.bind(this), onFocus: this._handleFocus.bind(this), onBlur: this._handleBlur.bind(this) }));
+    };
+    Field.prototype.render = function () {
+        var _a = this.props.schema, properties = _a.properties, items = _a.items;
+        var formGroupClasses = timcowebapps_react_utils_1.Classes.bem(properties.classes.pipeline, properties.classes.block, {
             modifiers: [
                 this.state.valid ? "valid" : "error",
                 this.state.focused ? "focused" : "unfocused"
             ]
         });
-        var error = this.state.valid ? null : React.createElement("strong", { className: styles["error"] }, "this.state.errorMessages");
-        return (React.createElement("div", { className: formGroupClasses },
-            React.createElement("label", { className: timcowebapps_react_utils_1.Classes.bem(styles, "form_group", { element: ["label"], modifiers: [] }), htmlFor: this.props.name + "_field" },
-                this.props.text,
-                (this.props.required) ? React.createElement("span", { className: timcowebapps_react_utils_1.Classes.bem(styles, "form_group__label", { element: ["required_field"], modifiers: [] }) }, "*") : null),
-            React.createElement("div", null,
-                React.createElement("input", { type: this.props.type, name: this.props.name, id: this.props.name + "_field", defaultValue: this.props.defaultValue, onChange: this._onChange.bind(this), onFocus: this._onFocus.bind(this), onBlur: this._onBlur.bind(this), placeholder: this.props.placeholder, maxLength: 128, required: this.props.required }),
-                React.createElement("p", { id: this.props.name + "_error_id", className: styles["help_block"] }, error))));
+        return (React.createElement("div", { className: formGroupClasses, style: __assign({}, properties.style) },
+            React.createElement(label_1.Label, { schema: _.merge({}, {
+                    properties: {
+                        classes: {
+                            pipeline: properties.classes.pipeline,
+                            prefix: properties.classes.block + "__"
+                        }
+                    }
+                }, _.filter(items, { id: 'label' })[0]) }),
+            this._renderInput(properties.name, properties.classes, _.filter(items, { id: 'input' })[0])));
     };
-    TextInput.prototype._onChange = function (event) {
+    Field.prototype._handleChange = function (event) {
         if (this.props.validate) {
             var target = event.target;
             if (this.props.validate && this.props.validate(target.value)) {
                 this.setState({
+                    empty: this._isEmpty(event.target.value),
                     valid: true
                 });
             }
             else {
                 this.setState({
+                    empty: this._isEmpty(event.target.value),
                     valid: false
                 });
             }
@@ -35544,46 +35726,52 @@ var TextInput = (function (_super) {
         if (this.props.onChange)
             this.props.onChange(event);
     };
-    TextInput.prototype._onFocus = function (event) {
+    Field.prototype._handleFocus = function (event) {
         this.setState({
             focused: true
         });
     };
-    TextInput.prototype._onBlur = function (event) {
+    Field.prototype._handleBlur = function (event) {
         this.setState({
             focused: false
         });
     };
-    TextInput.displayName = 'TextInput';
-    TextInput.propTypes = {
-        type: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        defaultValue: PropTypes.string,
+    Field.displayName = 'Field';
+    Field.propTypes = {
+        schema: PropTypes.shape({
+            properties: PropTypes.shape({
+                name: PropTypes.string.isRequired,
+                classes: PropTypes.object.isRequired
+            }),
+            items: PropTypes.arrayOf(PropTypes.shape({
+                id: PropTypes.string.isRequired,
+                properties: PropTypes.oneOfType([
+                    PropTypes.shape({
+                        tag: PropTypes.string.isRequired,
+                        type: PropTypes.string
+                    }),
+                    PropTypes.shape({
+                        text: PropTypes.string.isRequired
+                    })
+                ])
+            }))
+        }),
         value: PropTypes.string,
-        text: PropTypes.string,
-        placeholder: PropTypes.string,
         onChange: PropTypes.func,
-        required: PropTypes.bool
+        validate: PropTypes.func
     };
-    TextInput.defaultProps = {
-        styles: null,
-        type: 'text',
-        name: '',
-        defaultValue: '',
+    Field.defaultProps = {
         value: '',
-        text: '',
-        placeholder: '',
         onChange: null,
-        required: false,
-        errorMessages: ''
+        validate: null
     };
-    return TextInput;
+    return Field;
 }(React.Component));
-exports.TextInput = TextInput;
+exports.Field = Field;
 
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var g;
@@ -35610,7 +35798,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -35638,42 +35826,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(34)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(35)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35687,9 +35840,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(3);
+var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
-var assign = __webpack_require__(2);
+var assign = __webpack_require__(3);
 
 var ReactPropTypesSecret = __webpack_require__(8);
 var checkPropTypes = __webpack_require__(7);
@@ -36223,7 +36376,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36237,7 +36390,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(3);
+var invariant = __webpack_require__(4);
 var ReactPropTypesSecret = __webpack_require__(8);
 
 module.exports = function() {
@@ -36288,25 +36441,14 @@ module.exports = function() {
 
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports.Shared = __webpack_require__(16).Shared;
-exports.Classes = __webpack_require__(37).Classes;
-exports.Enum = __webpack_require__(38).Enum;
-exports.IJsonSchemaMap = __webpack_require__(17).IJsonSchemaMap;
-exports.IJsonSchema = __webpack_require__(17).IJsonSchema;
-
-
-/***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(15);
-var shared_1 = __webpack_require__(16);
+var _ = __webpack_require__(16);
+var shared_1 = __webpack_require__(19);
 var Classes;
 (function (Classes) {
     function combine() {
@@ -36334,7 +36476,7 @@ var Classes;
         return classNames.join(' ').trim();
     }
     Classes.combine = combine;
-    function bem(styles, block, props, options) {
+    function bem(pipeline, block, props, options) {
         if (options === void 0) { options = {}; }
         var defaults = {
             prefix: '',
@@ -36344,17 +36486,23 @@ var Classes;
         var _a = _.merge({}, defaults, options), prefix = _a.prefix, delimiters = _a.delimiters;
         var blockName = prefix + block;
         var rootName = element ? "" + blockName + delimiters.element + element : blockName;
-        var className = [styles[rootName]].concat(modifiers.map(function (modifier) {
-            return styles["" + rootName + delimiters.modifier + modifier];
-        })).join(' ').trim();
-        return className;
+        var classNames = "";
+        if (modifiers.length > 0) {
+            classNames = [pipeline[rootName]].concat(modifiers.map(function (modifier) {
+                return pipeline["" + rootName + delimiters.modifier + modifier];
+            })).join(' ').trim();
+        }
+        else {
+            classNames = pipeline[rootName];
+        }
+        return classNames;
     }
     Classes.bem = bem;
 })(Classes = exports.Classes || (exports.Classes = {}));
 //# sourceMappingURL=classes.js.map
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36369,12 +36517,96 @@ var Enum;
 //# sourceMappingURL=enumerable.js.map
 
 /***/ }),
-/* 39 */
-/***/ (function(module, exports) {
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
-module.exports = {"form_group":"textInput-2xOzR","form_group--valid":"textInput-3BOX9","form_group--error":"textInput-15T-B","form_group--empty":"textInput-19s5G","form_group--focused":"textInput-ZwaGE","form_group--unfocused":"textInput-2SNAa","form_group__label":"textInput-2VjhF","form_group__label__required_field":"textInput-24Y44","help_block":"textInput-1Ui3T","error":"textInput-10R8c"};
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(2);
+var PropTypes = __webpack_require__(17);
+var timcowebapps_react_utils_1 = __webpack_require__(18);
+var Label = (function (_super) {
+    __extends(Label, _super);
+    function Label(props) {
+        return _super.call(this, props) || this;
+    }
+    Label.prototype.render = function () {
+        var _a = this.props.schema, properties = _a.properties, items = _a.items;
+        return React.createElement('label', {
+            htmlFor: name + "_id",
+            className: timcowebapps_react_utils_1.Classes.bem(properties.classes.pipeline, "label", {
+                modifiers: (properties.classes) ? (properties.classes.modifiers || []) : []
+            }, { prefix: properties.classes.prefix })
+        }, properties.text);
+    };
+    Label.displayName = 'Label';
+    Label.propTypes = {
+        schema: PropTypes.shape({
+            properties: PropTypes.shape({
+                classes: PropTypes.object.isRequired
+            })
+        })
+    };
+    return Label;
+}(React.Component));
+exports.Label = Label;
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.validationRequired = function (value) {
+    var result = value ? undefined : "This can't be empty";
+    return result;
+};
+exports.validationMinLength = function (min) { return function (value) {
+    var result = value && value.length < min
+        ? "Must be " + min + " characters or greater"
+        : undefined;
+    return result;
+}; };
+exports.validationMaxLength = function (max) { return function (value) {
+    var result = value && value.length > max
+        ? "Must be " + max + " characters or less"
+        : undefined;
+    return result;
+}; };
+exports.validationEmail = function (value) {
+    var result = value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+        ? 'Invalid email address'
+        : undefined;
+    return result;
+};
+function checkEmail(value) {
+    return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+}
+exports.checkEmail = checkEmail;
+function checkUrl(value) {
+    return /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/.test(value);
+}
+exports.checkUrl = checkUrl;
+function checkPattern(value, regex) {
+    var pattern = new RegExp(regex);
+    return pattern.test(value);
+}
+exports.checkPattern = checkPattern;
+
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map?0bcfb6af7e03e9ae6d21
+//# sourceMappingURL=bundle.js.map?c40f420c95330d62ba98

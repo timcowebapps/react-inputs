@@ -1,8 +1,8 @@
 'use strict';
 
-export interface ITextInputState {
+export interface IFieldState {
 	value?: string;
-	errorMessages?: string;
+	empty: boolean;
 	valid: boolean; /*!< Логический тип данных, определяющий валидность поля. */
 	focused: boolean;
 }

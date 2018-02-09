@@ -1,0 +1,16 @@
+@import '~timcowebapps-scss-dir/_global.scss';
+@import '~timcowebapps-scss-dir/mixins/_border-radius.scss';
+@import '~timcowebapps-scss-dir/mixins/_box-sizing.scss';
+@import '~timcowebapps-scss-dir/mixins/_transition.scss';
+@import '~timcowebapps-scss-dir/mixins/_shadow.scss';
+@import '~timcowebapps-scss-dir/utils/_bem.scss';
+
+@import '../src/components/_variables';
+
+$field-label_color: #333;
+
+$field-input_color: #333;
+$field-input_border-color: #ccc;
+$field-input_border-color-error: #b85e5e;
+
+@import '../src/components/field.scss';
