@@ -1,6 +1,6 @@
 {
 	"name": "timcowebapps-react-inputs",
-	"version": "0.2.0",
+	"version": "0.2.0-rc.1",
 	"description": "Микрокомпонент полей ввода",
 	"author": "Victor Timoshin <victor-timoshin@hotmail.com>",
 	"license": "MIT",

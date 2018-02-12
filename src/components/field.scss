@@ -39,27 +39,35 @@
 		border: 1px solid $field-input_border-color;
 		@include border-radius(0);
 		position: relative;
-		height: auto;
 		width: 100%;
+		height: auto;
+		/* #region Внешний и внутренний отступ */
 		margin: 0;
 		padding: 8px 16px;
+		/* #endregion */
 		@include box-sizing(border-box);
 		outline: none;
-
-		// Стили шрифта
+		/* #region Стили шрифта */
 		font-family: inherit; /*!< Необходимо наследовать значение свойства у родительского элемента */
 		color: $field-input_color;
 		font-size: 16px;
+		/* #endregion */
+		/* #region Placeholder */
+		&::-webkit-input-placeholder { color: $field-input_placeholder-color }
+		&::-moz-placeholder { color: $field-input_placeholder-color }
+		&::-ms-input-placeholder { color: $field-input_placeholder-color }
+		/* #endregion */
 	}
 
 	@include element("label") {
 		display: inline-block;
 		margin-bottom: 5px;
 
-		// Стили шрифта
+		/* #region Стили шрифта */
 		color: $field-label_color;
 		font-size: 16px;
 		font-weight: 700;
+		/* #endregion */
 
 		@include element("asterisk") {
 			color: #ff0000;

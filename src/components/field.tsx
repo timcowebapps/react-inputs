@@ -1,16 +1,16 @@
 'use strict';
 
 /* Внешние зависимости. */
-import * as _ from 'lodash';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as PropTypes from 'prop-types';
-import { Classes } from 'timcowebapps-react-utils';
+import * as _ from 'lodash'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import * as PropTypes from 'prop-types'
+import { Classes } from 'timcowebapps-react-utils'
 
 /* Внутренние зависимости. */
-import { IFieldProps } from './field-props';
-import { IFieldState } from './field-state';
-import { Label } from './label';
+import { IFieldProps } from './field-props'
+import { IFieldState } from './field-state'
+import { Label } from './label'
 
 export class Field extends React.Component<IFieldProps, IFieldState> {
 	public static displayName: string = 'Field';
@@ -36,8 +36,8 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 					])
 				})
 			)
-		}),
-		value: PropTypes.string,
+		}).isRequired,
+		value: PropTypes.string.isRequired,
 		onChange: PropTypes.func,
 		validate: PropTypes.func
 	}
@@ -67,16 +67,15 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 
 	/**
 	 * Начальное состояние свойств по умолчанию.
+	 * 
+	 * @class Field
+	 * @private
+	 * @method _getInitialState
 	 */
 	private _getInitialState(): IFieldState {
-		let inputDefaultValue = "";
-		let inputSchema = _.filter(this.props.schema.items, { id: 'input' })[0];
-		if (inputSchema.default)
-			inputDefaultValue = inputSchema.default.value;
-
 		return {
-			value: this.props.value || inputDefaultValue,
-			empty: this._isEmpty(this.props.value || inputDefaultValue),
+			value: this.props.value || "",
+			empty: _.isEmpty(this.props.value),
 			valid: true,
 			focused: false
 		};
@@ -106,10 +105,6 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 		return this.state.valid;
 	}
 
-	private _isEmpty(value: string) {
-		return value === '';
-	}
-
 	/**
 	 * Отрисовывает форму ввода.
 	 * 
@@ -130,8 +125,8 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 
 		attributes.name = name;
 		attributes.id = name + "_id";
-		attributes.defaultValue = (obj.default) ? obj.default.value : "";
-		attributes.placeholder = obj.properties.placeholder || null;
+		attributes.value = this.props.value;
+		attributes.placeholder = obj.properties.placeholder || null;	
 		attributes.className = Classes.bem(classes.pipeline, classes.block, {
 			element: "input",
 			modifiers: (obj.properties.classes) ? (obj.properties.classes.modifiers || []) : []
@@ -156,6 +151,9 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 	public render(): JSX.Element {
 		const { properties, items } = this.props.schema;
 
+		const labelSchema = _.filter(items, { id: 'label' })[0];
+		const inputSchema = _.filter(items, { id: 'input' })[0];
+
 		// for (var i = 0; i < properties.validators.length; ++i) {
 		// 	console.log(properties.validators[i](this.state.value));
 		// }
@@ -169,16 +167,16 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 
 		return (
 			<div className={formGroupClasses} style={{ ...properties.style }}>
-				<Label schema={_.merge({}, {
+				{labelSchema ? <Label schema={_.merge({}, {
+					name: properties.name,
 					properties: {
 						classes: {
 							pipeline: properties.classes.pipeline,
 							prefix: properties.classes.block + "__"
 						}
 					}
-				}, _.filter(items, { id: 'label' })[0])} />
-
-				{this._renderInput(properties.name, properties.classes, _.filter(items, { id: 'input' })[0])}
+				}, labelSchema)} /> : null}
+				{this._renderInput(properties.name, properties.classes, inputSchema)}
 			</div>
 		);
 	}
@@ -190,12 +188,12 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 			let target: any = event.target;
 			if (this.props.validate && this.props.validate(target.value)) {
 				this.setState({
-					empty: this._isEmpty(event.target.value),
+					empty: _.isEmpty(event.target.value),
 					valid: true
 				});
 			} else {
 				this.setState({
-					empty: this._isEmpty(event.target.value),
+					empty: _.isEmpty(event.target.value),
 					valid: false
 				});
 			}

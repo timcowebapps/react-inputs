@@ -11,7 +11,7 @@ export interface IFieldProps extends React.Props<any> {
 	 * @type {IJsonSchema}
 	 * @memberof IFieldProps
 	 */
-	schema?: IJsonSchema;
+	schema: IJsonSchema;
 
 	/**
 	 * Значение передаваемое в поле ввода.
@@ -19,7 +19,7 @@ export interface IFieldProps extends React.Props<any> {
 	 * @type {string}
 	 * @memberof IFieldProps
 	 */
-	value?: string;
+	value: string;
 
 	onChange?: Function;
 	

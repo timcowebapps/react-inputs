@@ -18194,7 +18194,7 @@ var App = (function (_super) {
     App.prototype._getInitialState = function () {
         return {
             fields: {
-                website: '',
+                website: 'https://timcowebapps.github.io/react-inputs/',
                 message: ''
             }
         };
@@ -18251,27 +18251,11 @@ var App = (function (_super) {
                     },
                     items: [{
                             id: 'input',
-                            default: {
-                                value: "https://timcowebapps.github.io/react-inputs/"
-                            },
                             properties: {
                                 tag: "input",
                                 type: "url",
                                 placeholder: "Введите адрес сайта",
-                                classes: {
-                                    modifiers: [],
-                                    extra: ""
-                                },
                                 style: ""
-                            }
-                        }, {
-                            id: 'label',
-                            properties: {
-                                text: "Сайт:",
-                                classes: {
-                                    modifiers: [],
-                                    extra: ""
-                                }
                             }
                         }]
                 } }),
@@ -35631,13 +35615,9 @@ var Field = (function (_super) {
         return _this;
     }
     Field.prototype._getInitialState = function () {
-        var inputDefaultValue = "";
-        var inputSchema = _.filter(this.props.schema.items, { id: 'input' })[0];
-        if (inputSchema.default)
-            inputDefaultValue = inputSchema.default.value;
         return {
-            value: this.props.value || inputDefaultValue,
-            empty: this._isEmpty(this.props.value || inputDefaultValue),
+            value: this.props.value || "",
+            empty: _.isEmpty(this.props.value),
             valid: true,
             focused: false
         };
@@ -35664,9 +35644,6 @@ var Field = (function (_super) {
         }
         return this.state.valid;
     };
-    Field.prototype._isEmpty = function (value) {
-        return value === '';
-    };
     Field.prototype._renderInput = function (name, classes, obj) {
         var attributes = {};
         if (obj.properties.tag === "textarea") {
@@ -35679,7 +35656,7 @@ var Field = (function (_super) {
         }
         attributes.name = name;
         attributes.id = name + "_id";
-        attributes.defaultValue = (obj.default) ? obj.default.value : "";
+        attributes.value = this.props.value;
         attributes.placeholder = obj.properties.placeholder || null;
         attributes.className = timcowebapps_react_utils_1.Classes.bem(classes.pipeline, classes.block, {
             element: "input",
@@ -35690,6 +35667,8 @@ var Field = (function (_super) {
     };
     Field.prototype.render = function () {
         var _a = this.props.schema, properties = _a.properties, items = _a.items;
+        var labelSchema = _.filter(items, { id: 'label' })[0];
+        var inputSchema = _.filter(items, { id: 'input' })[0];
         var formGroupClasses = timcowebapps_react_utils_1.Classes.bem(properties.classes.pipeline, properties.classes.block, {
             modifiers: [
                 this.state.valid ? "valid" : "error",
@@ -35697,28 +35676,29 @@ var Field = (function (_super) {
             ]
         });
         return (React.createElement("div", { className: formGroupClasses, style: __assign({}, properties.style) },
-            React.createElement(label_1.Label, { schema: _.merge({}, {
+            labelSchema ? React.createElement(label_1.Label, { schema: _.merge({}, {
+                    name: properties.name,
                     properties: {
                         classes: {
                             pipeline: properties.classes.pipeline,
                             prefix: properties.classes.block + "__"
                         }
                     }
-                }, _.filter(items, { id: 'label' })[0]) }),
-            this._renderInput(properties.name, properties.classes, _.filter(items, { id: 'input' })[0])));
+                }, labelSchema) }) : null,
+            this._renderInput(properties.name, properties.classes, inputSchema)));
     };
     Field.prototype._handleChange = function (event) {
         if (this.props.validate) {
             var target = event.target;
             if (this.props.validate && this.props.validate(target.value)) {
                 this.setState({
-                    empty: this._isEmpty(event.target.value),
+                    empty: _.isEmpty(event.target.value),
                     valid: true
                 });
             }
             else {
                 this.setState({
-                    empty: this._isEmpty(event.target.value),
+                    empty: _.isEmpty(event.target.value),
                     valid: false
                 });
             }
@@ -35755,8 +35735,8 @@ var Field = (function (_super) {
                     })
                 ])
             }))
-        }),
-        value: PropTypes.string,
+        }).isRequired,
+        value: PropTypes.string.isRequired,
         onChange: PropTypes.func,
         validate: PropTypes.func
     };
@@ -36542,7 +36522,7 @@ var Label = (function (_super) {
         return _super.call(this, props) || this;
     }
     Label.prototype.render = function () {
-        var _a = this.props.schema, properties = _a.properties, items = _a.items;
+        var _a = this.props.schema, properties = _a.properties, items = _a.items, name = _a.name;
         return React.createElement('label', {
             htmlFor: name + "_id",
             className: timcowebapps_react_utils_1.Classes.bem(properties.classes.pipeline, "label", {
@@ -36609,4 +36589,4 @@ exports.checkPattern = checkPattern;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map?c40f420c95330d62ba98
+//# sourceMappingURL=bundle.js.map?16e6eb6726814f20e6a5

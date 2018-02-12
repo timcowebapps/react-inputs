@@ -45,7 +45,7 @@ class App extends React.Component<any, IAppState> {
 	private _getInitialState(): IAppState {
 		return {
 			fields: {
-				website: '',
+				website: 'https://timcowebapps.github.io/react-inputs/',
 				message: ''
 			}
 		};
@@ -126,27 +126,15 @@ class App extends React.Component<any, IAppState> {
 						},
 						items: [{
 							id: 'input',
-							default: {
-								value: "https://timcowebapps.github.io/react-inputs/"
-							},
 							properties: {
 								tag: "input",
 								type: "url",
 								placeholder: "Введите адрес сайта",
-								classes: {
-									modifiers: [],
-									extra: ""
-								},
+								// classes: {
+								// 	modifiers: [],
+								// 	extra: ""
+								// },
 								style: ""
-							}
-						}, {
-							id: 'label',
-							properties: {
-								text: "Сайт:",
-								classes: {
-									modifiers: [],
-									extra: ""
-								}
 							}
 						}]
 					}} />
