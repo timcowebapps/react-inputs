@@ -1,55 +1,21 @@
 'use strict';
 
 /* Внешние зависимости. */
-import * as _ from 'lodash'
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import * as PropTypes from 'prop-types'
-import { Classes } from 'timcowebapps-react-utils'
+import * as _ from 'lodash';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as PropTypes from 'prop-types';
+import { Classes, Schema } from 'timcowebapps-react-utils';
 
 /* Внутренние зависимости. */
-import { IFieldProps } from './field-props'
-import { IFieldState } from './field-state'
-import { Label } from './label'
+import { FieldProps } from './field-props';
+import { FieldState } from './field-state';
+import { Label } from './label';
 
-export class Field extends React.Component<IFieldProps, IFieldState> {
+export class Field extends React.Component<FieldProps.IProps, FieldState.IState> {
 	public static displayName: string = 'Field';
-
-	public static propTypes: PropTypes.ValidationMap<IFieldProps> = {
-		schema: PropTypes.shape({
-			properties: PropTypes.shape({
-				name: PropTypes.string.isRequired,
-				classes: PropTypes.object.isRequired
-			}),
-			items: PropTypes.arrayOf(
-				PropTypes.shape({
-					id: PropTypes.string.isRequired,
-					// Ограничение свойства списком валидаторов.
-					properties: PropTypes.oneOfType([
-						PropTypes.shape({
-							tag: PropTypes.string.isRequired,
-							type: PropTypes.string
-						}),
-						PropTypes.shape({
-							text: PropTypes.string.isRequired
-						})
-					])
-				})
-			)
-		}).isRequired,
-		value: PropTypes.string.isRequired,
-		onChange: PropTypes.func,
-		validate: PropTypes.func
-	}
-
-	/**
-	 * Свойства компонента по умолчанию.
-	 */
-	public static defaultProps = {
-		value: '',
-		onChange: null,
-		validate: null
-	}
+	public static propTypes: PropTypes.ValidationMap<FieldProps.IProps> = FieldProps.types;
+	public static defaultProps = FieldProps.defaults; /*!< Свойства компонента по умолчанию. */
 
 	/**
 	 * Конструктор класса.
@@ -57,9 +23,9 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 	 * @class Field
 	 * @public
 	 * @constructor
-	 * @param {IFieldProps} props Свойства компонента.
+	 * @param {FieldProps.IProps} props Свойства компонента.
 	 */
-	public constructor(props?: IFieldProps) {
+	public constructor(props?: FieldProps.IProps) {
 		super(props);
 
 		this.state = this._getInitialState();
@@ -72,7 +38,7 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 	 * @private
 	 * @method _getInitialState
 	 */
-	private _getInitialState(): IFieldState {
+	private _getInitialState(): FieldState.IState {
 		return {
 			value: this.props.value || "",
 			empty: _.isEmpty(this.props.value),
@@ -81,7 +47,7 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 		};
 	}
 
-	public componentWillReceiveProps(nextProps: IFieldProps) {
+	public componentWillReceiveProps(nextProps: FieldProps.IProps) {
 		if (nextProps.value !== this.props.value) {
 			this.setState({
 				value: nextProps.value,
@@ -126,7 +92,7 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 		attributes.name = name;
 		attributes.id = name + "_id";
 		attributes.value = this.props.value;
-		attributes.placeholder = obj.properties.placeholder || null;	
+		attributes.placeholder = obj.properties.placeholder || null;
 		attributes.className = Classes.bem(classes.pipeline, classes.block, {
 			element: "input",
 			modifiers: (obj.properties.classes) ? (obj.properties.classes.modifiers || []) : []
@@ -151,18 +117,18 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
 	public render(): JSX.Element {
 		const { properties, items } = this.props.schema;
 
-		const labelSchema = _.filter(items, { id: 'label' })[0];
-		const inputSchema = _.filter(items, { id: 'input' })[0];
+		const labelSchema = Schema.getItemById(items, 'label');
+		const inputSchema = Schema.getItemById(items, 'input');
 
 		// for (var i = 0; i < properties.validators.length; ++i) {
 		// 	console.log(properties.validators[i](this.state.value));
 		// }
 
 		var formGroupClasses = Classes.bem(properties.classes.pipeline, properties.classes.block, {
-			modifiers: [
+			modifiers: _.union([
 				this.state.valid ? "valid" : "error",
-				this.state.focused ? "focused" : "unfocused"
-			]
+				this.state.focused ? "focused" : "unfocused",
+			], properties.classes.modifiers)
 		});
 
 		return (

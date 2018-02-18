@@ -8,14 +8,15 @@ import * as PropTypes from 'prop-types'
 import { Classes } from 'timcowebapps-react-utils'
 
 /* Внутренние зависимости. */
-import { ILabelProps } from './label-props';
+import { ILabelProps } from './label-props'
 
-export class Label extends React.Component<ILabelProps, any> {
+export class Label extends React.Component<ILabelProps, {}> {
 	public static displayName: string = 'Label';
 
 	public static propTypes: PropTypes.ValidationMap<ILabelProps> = {
 		schema: PropTypes.shape({
 			properties: PropTypes.shape({
+				text: PropTypes.string.isRequired,
 				classes: PropTypes.object.isRequired
 			})
 		})

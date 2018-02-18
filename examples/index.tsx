@@ -11,8 +11,13 @@ import { Field } from '../src/components/field';
 import { validationRequired, validationMinLength, validationMaxLength, validationEmail, checkEmail, checkUrl, checkPattern } from '../src/components/validation-rules';
 var styles: any = require('./index.scss');
 
+interface IModel {
+	website: string;
+	message: string;
+}
+
 interface IAppState {
-	fields: any;
+	fields: IModel;
 }
 
 class App extends React.Component<any, IAppState> {
@@ -119,7 +124,7 @@ class App extends React.Component<any, IAppState> {
 								validationEmail
 							],
 							classes: {
-								pipeline: require('./index.scss'),
+								pipeline: styles,
 								block: "form_field"
 							},
 							style: { width: "100%" }
@@ -147,7 +152,7 @@ class App extends React.Component<any, IAppState> {
 						properties: {
 							name: "message",
 							classes: {
-								pipeline: require('./index.scss'),
+								pipeline: styles,
 								block: "form_field"
 							},
 							style: { width: "100%" }
